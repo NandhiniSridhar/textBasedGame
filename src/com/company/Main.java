@@ -30,20 +30,21 @@ public class Main {
             int enemyHealth = rand.nextInt(Enemy.maxHealth);
             int enemyType = rand.nextInt(Enemy.TYPE.values().length);
             Enemy enemy = new Enemy(enemyHealth, enemyType);
-            System.out.println("\t*A new + " + enemy.getMyType() + " has appeared!*\n");
-
+            System.out.println("\tA new " + enemy.getMyType() + " has appeared!\n");
+            String action = getPlayerAction();
             while(enemy.getHealth() > 0){
                 //System.out.println("inner while");
                 System.out.println("\tYour HP: "+ player.getHealth());
                 System.out.println("\t"+ enemy.getMyType() + "'s HP: "+ enemy.getHealth() + "\n");
-                String action = getPlayerAction();
 
                 if(action.compareToIgnoreCase("C") == 0){
-                    if(player.confront(enemy) == 0 || player.confront(enemy) == 3){
+                    int result = player.confront(enemy);
+                    if(result == 0 ||result == 3){
                         running = false;
                         break;
                     }
-                    if(player.confront(enemy) == 1){
+                    else if(result == 1){
+                        //System.out.println("killed enemy");
                         break;
                     }
                 }//confront
@@ -74,6 +75,7 @@ public class Main {
             String choice = in.nextLine();
             while(choice.compareToIgnoreCase("X") != 0 && choice.compareToIgnoreCase("C") != 0){
                 System.out.println("\tInvalid input. Please type X or C");
+                choice = in.nextLine();
             }
             if(choice.compareToIgnoreCase("X") == 0){
                 running = false;
@@ -95,10 +97,10 @@ public class Main {
         System.out.println("\tWhat would you like to do?\n\tConfront [C], Drink Health Potion [D], Run [R]");
         String action = in.nextLine();
 
-        if(action.compareToIgnoreCase("C") != 0 && action.compareToIgnoreCase("D") != 0 &&
+        while(action.compareToIgnoreCase("C") != 0 && action.compareToIgnoreCase("D") != 0 &&
                 action.compareToIgnoreCase("R") != 0){
             System.out.println("\tInvalid input. Please choose again");
-            getPlayerAction();
+            action = in.nextLine();
         }//if invalid input
         return action;
 
