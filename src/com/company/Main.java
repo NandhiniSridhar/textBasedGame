@@ -58,7 +58,7 @@ public class Main {
                     break;
                 }//run
                 //System.out.println("get actgion");
-                //getPlayerAction();
+                getPlayerAction();
                 //System.out.println("adter action");
             }//inner while - get player action
             if(player.getHealth() <= 0) {
