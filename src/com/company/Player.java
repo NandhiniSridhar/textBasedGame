@@ -66,7 +66,7 @@ public class Player {
             numHealthPotions -= 1;
             System.out.println("\tYou drink a health potion. Hope you have enough left" +
                     ". Your health is now " + health);
-            System.out.println("\tYou now have " + numHealthPotions + "health potions left\n");
+            System.out.println("\tYou now have " + numHealthPotions + " health potions left\n");
         }
         else{
             System.out.println("\tYou have no health potions left. Defeat an enemy to try to get one.\n");
